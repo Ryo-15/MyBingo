@@ -48,27 +48,31 @@
 
   // console.table(columns);
 
-  function createBingo(columns) {
-    const bingo = [];
+  // function createBingo(columns) {
+  //   const bingo = [];
+  //   for (let row = 0; row < 5; row++) {
+  //     bingo[row] = [];
+  //     for (let col = 0; col < 5; col++) {
+  //       bingo[row][col] = columns[col][row];
+  //     }
+  //   }
+  //   // console.table(bingo);
+  //   return bingo;
+  // }
+
+  function renderBingo(columns) {
     for (let row = 0; row < 5; row++) {
-      bingo[row] = [];
+      const tr = document.createElement('tr');
       for (let col = 0; col < 5; col++) {
-        bingo[row][col] = columns[col][row];
+        const td = document.createElement('td');
+        td.textContent = columns[col][row];
+        tr.appendChild(td);
       }
+      document.querySelector('tbody').appendChild(tr);
     }
-    // console.table(bingo);
-    return bingo;
   }
 
-  for (let row = 0; row < 5; row++) {
-    const tr = document.createElement('tr');
-    for (let col = 0; col < 5; col++) {
-      const td = document.createElement('td');
-      td.textContent = bingo[row][col];
-      tr.appendChild(td);
-    }
-    document.querySelector('tbody').appendChild(tr);
-  }
-
-
+  const columns = createColumns();
+  // const bingo = createBingo(columns);
+  renderBingo(columns);
 }
